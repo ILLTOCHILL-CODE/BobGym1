@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iron Forge Gym</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#ccff00",
+                        "primary-dark": "#b3e600",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#1f230f",
+                        "surface-dark": "#2a3016",
+                    },
+                    fontFamily: {
+                        display: ["Space Grotesk", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex min-h-screen flex-col">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0 h-full w-full bg-cover bg-center bg-no-repeat" data-alt="Muscular weightlifter training in dark gym" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDnbA6CZz6WtIOcSfq4CYvnDLYCrwxqgnicQARBul0-eiSU0Gak-MOHhIYIXcKKhawzgMeFUuXQcuwgd51vOuRlwoLSKcXYpMEFe4Gcv8myRRHwMsiLR7OACHTEtDEyUxiydOcjgAo-tVPO5gertgnckLXpgF6bSUzntw0JOCcBXRIaD4XAYuqOiJICzHW8YiPQ3n-DS1iXMGp-8XwBITEc1qlOxyiJl3yW7aE_wBDP74DvOhaW6fjScapY0DNyqK6sPhb6Q1_5urep');">
+<div class="absolute inset-0 bg-background-dark/80 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent"></div>
+</div>
+<!-- Glassmorphic Navigation -->
+<nav class="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/30 backdrop-blur-md">
+<div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-4xl">fitness_center</span>
+<h2 class="text-xl font-bold tracking-tight text-white">IRON FORGE</h2>
+</div>
+<div class="hidden items-center gap-10 md:flex">
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-primary" href="#">PROGRAMS</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-primary" href="#">MEMBERSHIP</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-primary" href="#">COACHES</a>
+<a class="text-sm font-medium text-white/80 transition-colors hover:text-primary" href="#">LOCATIONS</a>
+</div>
+<div class="hidden md:block">
+<button class="flex items-center justify-center rounded bg-primary px-6 py-2.5 text-sm font-bold text-background-dark transition-transform hover:scale-105 hover:bg-primary-dark">
+                        JOIN NOW
+                    </button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="text-white md:hidden">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="relative z-10 flex flex-grow flex-col justify-center px-6 lg:px-8">
+<div class="mx-auto max-w-7xl w-full pt-16 pb-24 lg:pb-32 lg:pt-32">
+<div class="max-w-4xl">
+<div class="mb-6 flex items-center gap-2">
+<span class="h-0.5 w-12 bg-primary"></span>
+<span class="text-sm font-bold uppercase tracking-widest text-primary">Est. 2023</span>
+</div>
+<h1 class="mb-6 text-6xl font-black uppercase leading-none tracking-tighter text-white sm:text-7xl md:text-8xl lg:text-[7rem]">
+                        Generic Gyms <br/>
+<span class="text-transparent" style="-webkit-text-stroke: 2px #ccff00;">Don't Build</span> <br/>
+                        Greatness
+                    </h1>
+<p class="mb-10 max-w-2xl text-lg font-light leading-relaxed text-white/80 md:text-xl">
+                        Elite Coaching. Industrial Equipment. Unrivaled Atmosphere. <br class="hidden md:block"/>
+                        Stop exercising. Start training.
+                    </p>
+<div class="flex flex-col gap-4 sm:flex-row">
+<button class="group flex h-14 min-w-[200px] items-center justify-center gap-2 rounded bg-primary px-8 text-base font-bold text-background-dark transition-all hover:bg-white">
+                            START YOUR TRIAL
+                            <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+<button class="flex h-14 min-w-[200px] items-center justify-center gap-2 rounded border border-white/20 px-8 text-base font-bold text-white transition-all hover:border-primary hover:text-primary backdrop-blur-sm bg-white/5">
+<span class="material-symbols-outlined text-lg">play_circle</span>
+                            WATCH VIDEO
+                        </button>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="mx-auto w-full max-w-7xl border-t border-white/10 pt-8 pb-16">
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+<div>
+<p class="text-3xl font-bold text-white">12</p>
+<p class="text-sm font-medium text-white/60 uppercase tracking-wider">Locations</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-white">5k+</p>
+<p class="text-sm font-medium text-white/60 uppercase tracking-wider">Members</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-white">50</p>
+<p class="text-sm font-medium text-white/60 uppercase tracking-wider">Expert Coaches</p>
+</div>
+<div>
+<p class="text-3xl font-bold text-white">24/7</p>
+<p class="text-sm font-medium text-white/60 uppercase tracking-wider">Access</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Vertical Scroll Indicator -->
+<div class="absolute bottom-0 right-10 hidden h-32 w-px bg-white/20 lg:block">
+<div class="absolute top-0 h-1/2 w-full animate-pulse bg-primary shadow-[0_0_10px_#ccff00]"></div>
+</div>
+</div>
+<!-- Features Section -->
+<section class="bg-background-dark py-20 lg:py-32 relative overflow-hidden">
+<!-- Subtle gradient orb -->
+<div class="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[100px]"></div>
+<div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
+<div class="mb-16 md:flex md:items-end md:justify-between">
+<div class="max-w-2xl">
+<h2 class="text-4xl font-bold tracking-tight text-white sm:text-5xl">WHY CHOOSE US</h2>
+<p class="mt-4 text-lg text-white/60">Experience the difference of a gym built for serious athletes who demand more from their training environment.</p>
+</div>
+<div class="mt-6 md:mt-0">
+<a class="text-primary font-bold hover:text-white transition-colors flex items-center gap-2" href="#">
+                        View All Benefits <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="grid gap-6 md:grid-cols-3">
+<!-- Card 1 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/10 bg-surface-dark p-8 transition-all hover:border-primary/50 hover:bg-surface-dark/80 hover:-translate-y-1">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined text-3xl">fitness_center</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white">Elite Equipment</h3>
+<p class="text-white/60">Top-tier Hammer Strength machines and calibrated Eleiko plates for precision training.</p>
+<div class="absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/10 bg-surface-dark p-8 transition-all hover:border-primary/50 hover:bg-surface-dark/80 hover:-translate-y-1">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white">Expert Coaching</h3>
+<p class="text-white/60">Certified trainers with real competition experience dedicated to your progress.</p>
+<div class="absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden rounded-xl border border-white/10 bg-surface-dark p-8 transition-all hover:border-primary/50 hover:bg-surface-dark/80 hover:-translate-y-1">
+<div class="mb-6 inline-flex h-14 w-14 items-center justify-center rounded bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background-dark transition-colors">
+<span class="material-symbols-outlined text-3xl">schedule</span>
+</div>
+<h3 class="mb-3 text-xl font-bold text-white">24/7 Access</h3>
+<p class="text-white/60">Train on your schedule with secure, round-the-clock access to all facilities.</p>
+<div class="absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-300 group-hover:w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<footer class="border-t border-white/10 bg-background-dark py-12">
+<div class="mx-auto flex max-w-7xl flex-col items-center gap-8 px-6 lg:px-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">fitness_center</span>
+<span class="text-lg font-bold text-white">IRON FORGE</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-sm text-white/60 hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-sm text-white/60 hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-sm text-white/60 hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<div class="flex gap-6">
+<a class="text-white/60 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772 4.902 4.902 0 011.772-1.153c.636-.247 1.363-.416 2.427-.465C9.673 2.013 10.03 2 12.484 2h.231zm-5.679 4.678c-1.743 0-3.156 1.413-3.156 3.156 0 1.743 1.413 3.156 3.156 3.156 1.743 0 3.156-1.413 3.156-3.156 0-1.743-1.413-3.156-3.156-3.156zm0 1.578c.871 0 1.578.707 1.578 1.578 0 .871-.707 1.578-1.578 1.578-.871 0-1.578-.707-1.578-1.578 0-.871.707-1.578 1.578-1.578zm5.558-1.578c-1.743 0-3.156 1.413-3.156 3.156 0 1.743 1.413 3.156 3.156 3.156 1.743 0 3.156-1.413 3.156-3.156 0-1.743-1.413-3.156-3.156-3.156zm0 1.578c.871 0 1.578.707 1.578 1.578 0 .871-.707 1.578-1.578 1.578-.871 0-1.578-.707-1.578-1.578 0-.871.707-1.578 1.578-1.578z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-white/60 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-white/60 hover:text-primary transition-colors" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+</svg>
+</a>
+</div>
+<p class="text-xs text-white/40">© 2023 Iron Forge Gym. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

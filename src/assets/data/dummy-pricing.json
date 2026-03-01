@@ -1,0 +1,53 @@
+[
+    {
+        "id": "cp-zone-01",
+        "title": "Day Pass",
+        "price": 10,
+        "desc": "Experience Varanasi's premier health club for a single day. Full access to gym floors.",
+        "btnText": "Get Day Pass"
+    },
+    {
+        "id": "cp-zone-02",
+        "title": "Monthly Wellness",
+        "price": 45,
+        "desc": "The standard protocol for consistent health. Full facility access during designated hours.",
+        "btnText": "Join Monthly"
+    },
+    {
+        "id": "cp-zone-03",
+        "title": "Quarterly Commitment",
+        "price": 120,
+        "desc": "For those serious about long-term transformation. 90 days of structured progress.",
+        "btnText": "Lock In Quarter"
+    },
+    {
+        "id": "cp-zone-04",
+        "title": "The Bob's Gym Elite",
+        "price": 350,
+        "desc": "\"Good health keeps you ahead.\" Includes comprehensive access and premium recovery options.",
+        "btnText": "Claim Premium Access",
+        "isElite": true,
+        "matrixFeatures": [
+            {
+                "text": "24/7 Facility Access",
+                "bgImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80",
+                "bgId": "cp-bg-facility"
+            },
+            {
+                "text": "Unlimited Spa & Massage",
+                "bgImage": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",
+                "bgId": "cp-bg-recovery"
+            },
+            {
+                "text": "All Studio Classes (Yoga/Aerobics)",
+                "bgImage": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80",
+                "bgId": "cp-bg-programming"
+            },
+            {
+                "text": "Bespoke Personal Training",
+                "bgImage": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80",
+                "bgId": "cp-bg-bespoke"
+            }
+        ]
+    }
+]

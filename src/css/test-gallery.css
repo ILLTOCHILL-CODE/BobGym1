@@ -1,0 +1,532 @@
+/* 
+  test-gallery.css
+  Contains styles for Concept A and Concept B
+*/
+
+/* Reset / Basics for Test Page */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background, #050505);
+    color: var(--text-primary, #ffffff);
+    font-family: var(--font-body, system-ui, -apple-system, sans-serif);
+    overflow-x: hidden;
+}
+
+/* 
+==================================================
+  CONCEPT A: MONOLITHIC MASK
+================================================== 
+*/
+.monolith-container {
+    height: 300vh;
+    /* Scroll-jacking distance */
+    position: relative;
+    background-color: #000;
+}
+
+.monolith-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Background video/image to be revealed */
+.monolith-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80') center/cover;
+    z-index: 0;
+}
+
+/* The solid dark mask that will scale up and out */
+.monolith-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #050505;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Will use JS to scale the inner shape */
+    transform-origin: center center;
+}
+
+/* We create an inverted mask using CSS. 
+   A large dark box with an "A" shaped hole in the middle. */
+.monolith-mask {
+    /* Using a huge clip-path covering the whole screen, with a triangle cut out of it */
+    /* Outer polygon covers everything, inner polygon is the cutout using evenodd rule or just overlapping */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%,
+            /* The inner triangle cutout (Apex "A") */
+            50% 25%, 75% 85%, 25% 85%, 50% 25%);
+    transition: clip-path 0.1s;
+    background: #050505;
+}
+
+/* Wait, clip-path with a hole is tricky across browsers. Let's use SVG or mix-blend-mode.
+   Better: mix-blend-mode approach for the mask */
+.monolith-sticky {
+    background: #000;
+}
+
+/* Re-doing the mask approach with mix-blend-mode: multiply */
+.monolith-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    /* White turns transparent with multiply against black */
+    color: black;
+    mix-blend-mode: multiply;
+    z-index: 10;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mask-shape {
+    font-size: 80vw;
+    font-family: var(--font-heading, 'Inter', sans-serif);
+    font-weight: 900;
+    line-height: 0.8;
+    color: black;
+    /* This becomes the opaque part */
+    text-align: center;
+    transform-origin: center center;
+}
+
+.monolith-bg {
+    z-index: 5;
+    opacity: 0.8;
+    background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
+    background-size: cover;
+    background-position: center;
+}
+
+/* We need white all around the letter to multiply to transparency, and black text to multiply to dark.
+   Wait, multiply (bg * mask):
+   If mask is white (1), result is bg.
+   If mask is black (0), result is black.
+   So we want the background of the mask layer to be black, and the shape (text) to be white.
+   Then multiply mix-blend-mode:
+   Bg * Black = Black.
+   Bg * White = Bg.
+*/
+.monolith-mask-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    /* Will show through */
+    z-index: 10;
+    mix-blend-mode: multiply;
+}
+
+/* Instead of pure CSS mask, let's use a scale transform on an inverted SVG or just giant text */
+.monolith-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    /* The void */
+    color: transparent;
+    -webkit-text-stroke: 0px white;
+    /* We will use CSS mask-image for better support */
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 H100 V100 H0 Z M50,20 L80,80 H20 Z" fill="black" fill-rule="evenodd"/></svg>');
+    -webkit-mask-size: cover;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    z-index: 10;
+}
+
+/* The actual text content to appear inside */
+.monolith-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 15;
+    opacity: 0;
+    /* JS will fade this in */
+    color: white;
+    pointer-events: none;
+}
+
+.monolith-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: -2px;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+}
+
+.monolith-subtitle {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent, #e5ff00);
+}
+
+
+
+/* 
+==================================================
+  CONCEPT B: OBSIDIAN BENTO MATRIX
+================================================== 
+*/
+
+.bento-section {
+    min-height: 100vh;
+    background: #000;
+    display: flex;
+    align-items: center;
+}
+
+.bento-glass-case {
+    background: rgba(5, 5, 5, 0.6);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.obsidian-bento-grid {
+    display: grid;
+    /* 3x2 grid with asymmetric tracks initially */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 400px 400px;
+    gap: 8px;
+    /* Microscopic gaps */
+
+    /* The magical transition curve for grid expansion */
+    transition: grid-template-columns 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        grid-template-rows 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Physics using :has selector (Modern Browsers) */
+/* When cell 1 is hovered */
+.obsidian-bento-grid:has(> .bento-cell:nth-child(1):hover) {
+    grid-template-columns: 1.5fr 0.75fr 0.75fr;
+    grid-template-rows: 450px 350px;
+}
+
+.obsidian-bento-grid:has(> .bento-cell:nth-child(2):hover) {
+    grid-template-columns: 0.75fr 1.5fr 0.75fr;
+    grid-template-rows: 450px 350px;
+}
+
+.obsidian-bento-grid:has(> .bento-cell:nth-child(3):hover) {
+    grid-template-columns: 0.75fr 0.75fr 1.5fr;
+    grid-template-rows: 450px 350px;
+}
+
+.obsidian-bento-grid:has(> .bento-cell:nth-child(4):hover) {
+    grid-template-columns: 1.5fr 0.75fr 0.75fr;
+    grid-template-rows: 350px 450px;
+}
+
+.obsidian-bento-grid:has(> .bento-cell:nth-child(5):hover) {
+    grid-template-columns: 0.75fr 1.5fr 0.75fr;
+    grid-template-rows: 350px 450px;
+}
+
+.obsidian-bento-grid:has(> .bento-cell:nth-child(6):hover) {
+    grid-template-columns: 0.75fr 0.75fr 1.5fr;
+    grid-template-rows: 350px 450px;
+}
+
+
+.bento-cell {
+    position: relative;
+    border-radius: 4px;
+    /* Sharp edges */
+    overflow: hidden;
+    cursor: crosshair;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Sub-pixel border */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background: #000;
+}
+
+/* Inside the cell */
+.bento-cell figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    transition: filter 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+
+    /* Idle brooding state */
+    filter: grayscale(100%) contrast(1.1) brightness(0.4);
+}
+
+.bento-cell figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* Hover Ignition */
+.bento-cell:hover figure {
+    filter: grayscale(0%) contrast(1.0) brightness(1.0);
+    transform: scale(1.05);
+    /* Slight internal push */
+}
+
+/* Gradient Overlay for text readability */
+.cell-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    z-index: 1;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+}
+
+.bento-cell:hover .cell-overlay {
+    opacity: 0.9;
+}
+
+/* Glare Effect */
+.cell-glare {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: overlay;
+}
+
+.bento-cell:hover .cell-glare {
+    opacity: 1;
+}
+
+/* Content */
+.cell-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 24px;
+    z-index: 3;
+    transform: translateZ(30px);
+    /* 3D push out from the background */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cell-content h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    transform: translateY(10px);
+    opacity: 0.8;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cell-content p {
+    margin: 8px 0 0 0;
+    font-size: 0.875rem;
+    color: var(--accent, #e5ff00);
+    font-family: 'JetBrains Mono', monospace;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-cell:hover .cell-content h3 {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.bento-cell:hover .cell-content p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+/* Responsive constraints */
+@media (max-width: 1024px) {
+    .obsidian-bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 300px);
+    }
+
+    /* Disable complex grid hover expansion on tablet to avoid jank */
+    .obsidian-bento-grid:has(> .bento-cell:nth-child(1):hover) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 300px);
+    }
+
+    /* etc... */
+}
+
+@media (max-width: 768px) {
+    .obsidian-bento-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .bento-cell {
+        height: 350px;
+    }
+
+    .bento-cell figure {
+        filter: grayscale(0%) contrast(1.1) brightness(0.7);
+    }
+
+    .cell-content h3,
+    .cell-content p {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 
+==================================================
+  CONCEPT C: HORIZONTAL PARALLAX TIMELINE
+================================================== 
+*/
+
+.timeline-container {
+    height: 400vh;
+    /* Scroll distance for the timeline */
+    background: #000;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.timeline-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.timeline-header {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 10;
+}
+
+.timeline-scroll-wrapper {
+    width: 100%;
+    height: 60vh;
+    margin-top: 10vh;
+    /* We'll move this horizontally with GSAP */
+}
+
+.timeline-track {
+    display: flex;
+    height: 100%;
+    width: max-content;
+    padding: 0 5vw;
+    gap: 10vw;
+}
+
+.timeline-item {
+    width: 60vw;
+    max-width: 800px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.timeline-img-wrapper {
+    width: 100%;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 4px;
+    /* Darken images slightly so they feel cinematic */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-img {
+    position: absolute;
+    top: 0;
+    left: -20%;
+    /* Start offset for parallax */
+    width: 140%;
+    /* Wider than container so it can move */
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(80%) contrast(1.1);
+    transition: filter 0.5s ease;
+}
+
+.timeline-item:hover .timeline-img {
+    filter: grayscale(0%) contrast(1.1);
+}
+
+.timeline-content {
+    margin-top: 2rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--accent, #e5ff00);
+    /* We'll parallax this text too, moving slightly faster than the container */
+}
+
+.timeline-content h3 {
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.timeline-content p {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        width: 85vw;
+    }
+}

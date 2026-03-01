@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Concepts Test | APEX</title>
+    <link rel="stylesheet" href="/src/css/variables.css">
+    <link rel="stylesheet" href="/src/css/main.css">
+    <link rel="stylesheet" href="/src/css/test-gallery.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body style="background: #050505; color: white;">
+
+    <!-- Navigation Back -->
+    <nav class="glass-nav" style="position: fixed; z-index: 100;">
+        <a href="/"
+            style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; letter-spacing: 2px;">APEX</a>
+        <div class="nav-links">
+            <a href="#concept-a">Concept A (Monolith)</a>
+            <a href="#concept-b">Concept B (Bento)</a>
+            <a href="#concept-c">Concept C (Timeline)</a>
+        </div>
+    </nav>
+
+    <!-- Intro Header -->
+    <section
+        style="height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div>
+            <h1 style="font-size: 4rem; text-transform: uppercase;">Gallery UI Playground</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 1rem auto;">Scroll down to evaluate
+                Concept A (Monolithic Mask) and Concept B (Obsidian Bento Matrix).</p>
+        </div>
+    </section>
+
+    <!-- CONCEPT A: Monolithic Mask -->
+    <section id="concept-a" class="concept-section monolith-container">
+        <div class="monolith-sticky">
+            <div class="monolith-mask">
+                <!-- The shape/letter A masking the background -->
+                <div class="mask-shape">A</div>
+            </div>
+            <div class="monolith-bg"></div>
+
+            <div class="monolith-content">
+                <h2 class="monolith-title">UNYIELDING<br>POWER</h2>
+                <p class="monolith-subtitle">Step inside the crucible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer to separate concepts clearly -->
+    <section
+        style="height: 50vh; display: flex; align-items: center; justify-content: center; background: #000; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-size: 2rem; color: var(--text-secondary); letter-spacing: 4px;">SCROLL TO NEXT CONCEPT</h2>
+    </section>
+
+    <!-- CONCEPT B: Obsidian Bento Matrix -->
+    <section id="concept-b" class="concept-section bento-section">
+        <div class="container" style="max-width: 1400px; padding: 6rem 5%;">
+            <div style="margin-bottom: 4rem;">
+                <p class="text-accent" style="font-weight: 700; letter-spacing: 2px; text-transform: uppercase;">The
+                    Arsenal</p>
+                <h2 style="font-size: 4rem; text-transform: uppercase; margin: 0;">Elite Equipment</h2>
+            </div>
+
+            <div class="bento-glass-case">
+                <div class="obsidian-bento-grid">
+                    <!-- Cell 1 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=800"
+                                alt="Training area">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>OLYMPIC LIFTING</h3>
+                            <p>Eleiko Bars & Bumpers</p>
+                        </div>
+                    </div>
+                    <!-- Cell 2 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800"
+                                alt="Iron plates">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>IRON SANCTUARY</h3>
+                            <p>Pure raw tonnage</p>
+                        </div>
+                    </div>
+                    <!-- Cell 3 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=800"
+                                alt="Dumbbells">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>DUMBBELL MATRIX</h3>
+                            <p>5lb to 150lb Unbroken</p>
+                        </div>
+                    </div>
+                    <!-- Cell 4 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1534438097548-c8d76cb47230?auto=format&fit=crop&q=80&w=800"
+                                alt="Recovery">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>RECOVERY LAB</h3>
+                            <p>Cold Plunge & Sauna</p>
+                        </div>
+                    </div>
+                    <!-- Cell 5 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
+                                alt="Cardio">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>CONDITIONING</h3>
+                            <p>Assault & Concept2 Fleet</p>
+                        </div>
+                    </div>
+                    <!-- Cell 6 -->
+                    <div class="bento-cell" data-tilt>
+                        <figure>
+                            <img src="https://images.unsplash.com/photo-1581009137042-c552e48ce53f?auto=format&fit=crop&q=80&w=800"
+                                alt="Turf">
+                        </figure>
+                        <div class="cell-overlay"></div>
+                        <div class="cell-glare"></div>
+                        <div class="cell-content">
+                            <h3>TURF ZONE</h3>
+                            <p>Sleds, Yokes, Agility</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer -->
+    <section
+        style="height: 50vh; display: flex; align-items: center; justify-content: center; background: #000; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <h2 style="font-size: 2rem; color: var(--text-secondary); letter-spacing: 4px;">SCROLL TO NEXT CONCEPT</h2>
+    </section>
+
+    <!-- CONCEPT C: Horizontal Parallax Timeline -->
+    <section id="concept-c" class="concept-section timeline-container">
+        <div class="timeline-sticky">
+            <div class="timeline-header">
+                <p class="text-accent" style="font-weight: 700; letter-spacing: 2px;">THE JOURNEY</p>
+                <h2 style="font-size: 3rem; margin: 0; text-transform: uppercase;">Unbroken Progress</h2>
+            </div>
+
+            <div class="timeline-scroll-wrapper">
+                <div class="timeline-track">
+                    <!-- Image 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=1200"
+                                alt="Gym 1" class="timeline-img">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>01. THE FOUNDATION</h3>
+                            <p>Building raw strength from the ground up.</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200"
+                                alt="Gym 2" class="timeline-img">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>02. THE GRIND</h3>
+                            <p>Pushing past the point of failure.</p>
+                        </div>
+                    </div>
+
+                    <!-- Image 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=1200"
+                                alt="Gym 3" class="timeline-img">
+                        </div>
+                        <div class="timeline-content">
+                            <h3>03. THE PEAK</h3>
+                            <p>Reaching elite performance levels.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Space -->
+    <section style="height: 30vh; background: #000;"></section>
+
+    <script type="module" src="/src/js/test-gallery.js"></script>
+</body>
+
+</html>

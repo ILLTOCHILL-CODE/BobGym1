@@ -1,0 +1,97 @@
+# Comprehensive Implementation Plan: Gym Website
+
+Goal: Create a highly animated, modern, and mobile-friendly multi-page gym website using Vite Vanilla JS, GSAP, and a premium storytelling design system. 
+
+This document serves as the master blueprint. It details the two-phased freelance business model approach, ensuring the frontend animations are solidified before integrating dynamic backends.
+
+## The Strategy: The "Hybrid Retainer" Freelance Model
+We will build this project in two distinct phases. 
+1. **Phase 1 (Pure Frontend & GSAP):** Build the aesthetic shell using Vite and Dummy JSON Data.
+2. **Phase 2 (CMS Integration):** Connect Sanity.io so the gym owner can update text/images themselves, while retaining you for structural and technical maintenance.
+
+---
+
+## Architecture: Vite Vanilla Multi-Page Setup
+Vite natively supports Multi-Page Applications (MPA). We will configure `vite.config.js` to compile multiple entry HTML points.
+
+### Folder & File Structure
+```text
+/
+├── index.html                 (Home Page - The Narrative Story)
+├── pages/
+│   ├── classes.html           (Dynamic Class Schedule)
+│   ├── trainers.html          (Dynamic Trainer Roster)
+│   └── membership.html        (Pricing & Multi-step Sign up Modal)
+├── src/
+│   ├── css/
+│   │   ├── main.css           (Global styles & Utilities)
+│   │   ├── variables.css      (CSS Custom Properties from Design System)
+│   │   └── animations.css     (Static CSS fallbacks & keyframes)
+│   ├── js/
+│   │   ├── main.js            (Common JS imported across all pages)
+│   │   ├── gsap-animations.js (ScrollTrigger, Parallax, Magnetic Buttons)
+│   │   ├── components/        (Reusable JS logical components)
+│   │   └── data-fetch.js      (The brains for CMS/Dummy Data loops)
+│   └── assets/
+│       ├── images/
+│       └── data/              (Phase 1: Local Dummy JSON files)
+├── vite.config.js             (Rollup inputs for multiple HTML files)
+└── package.json
+```
+
+---
+
+## Phase 1: Development Plan (Frontend First)
+
+During Phase 1, we will hardcode the layout but use **JavaScript DOM Loops** reading from a local `dummy-data.json` file to mimic the eventual CMS. 
+
+### 1. Structure & Layout
+- Scaffold `index.html` as a single, long-scrolling narrative journey.
+- Implement the **"Skip the Flash" Utility Bar** at the very top for returning users to instantly access login portals or daily schedules without scrolling through the animations.
+- Set up CSS variables for True Black (`#0A0A0A`) and Neon Green (`#CCFF00`) accents based on the Design System.
+
+### 2. The GSAP Engine (`gsap-animations.js`)
+- Initialize `ScrollTrigger`.
+- **Hero Section**: Text splitting and parallax background scaling.
+- **The Vibe Section**: A container pinned to the viewport, translating horizontally `-100%` mapped to the vertical scroll progress.
+- **The Bento Grid**: Find all generated `.bento-card` elements and apply a staggered `opacity`/`y-axis` entrance.
+- **Accessibility Check**: Wrap GSAP setup in `window.matchMedia('(prefers-reduced-motion: no-preference)')`. If false, bypass complex animations.
+
+### 3. Dynamic DOM Generation (`data-fetch.js`)
+- Fetch from `/src/assets/data/dummy-trainers.json`.
+- Handle the **"Empty Array" Edge Case**: `if (data.length === 0)`, render a styled empty state.
+- Handle the **"Odd Numbers" Edge Case**: Use CSS Grid `auto-fit` combined with JS logic to ensure the Bento Grid always looks mathematically symmetrical, even if the owner adds 5 trainers instead of 4.
+- Handle the **"Missing Field" Edge Case**: Use optional chaining (`item?.image || '/assets/placeholder.svg'`).
+
+---
+
+## Phase 2: CMS Integration (Sanity.io)
+
+Once the client (User) approves the frontend animations, we execute Phase 2.
+
+### 1. Setup & Schema
+- Initialize `sanity` in a separate `/studio` directory.
+- Define strict Schemas:
+  - `Trainer` (String: Name, Image: Photo, Text: Bio)
+  - `Class` (String: Name, String: Time, Reference: Trainer)
+  - `Pricing_Tier` (String: Name, Array: Features, Number: Price)
+
+### 2. Connecting the Vite App
+- Replace the local `fetch()` calls in `src/js/data-fetch.js` with calls to the Sanity API endpoint via GROQ queries.
+- Incorporate **Skeleton Loaders** wrapped in `try/catch` blocks. If the Sanity network request fails (e.g. user has no internet), gracefully degrade.
+
+### 3. Ownership & Handoff
+- Deploy the frontend via Vercel or Netlify.
+- Invite the Gym Owner to the Sanity Dashboard as an **"Editor"** (not Admin). This allows them to change data while preventing them from deleting the infrastructure, justifying the freelance maintenance retainer.
+
+---
+
+## Verification Plan
+
+### Automated/Build Tests
+- **Build Check**: `npm run build` must cleanly resolve all HTML entry points in `vite.config.js`.
+
+### Manual/Visual Verification
+- **Dynamic Array Stress Testing**: Manually change the `dummy-data.json` to have 0 items, 1 item, and 50 items. Verify that CSS Grid does not break and GSAP stagger animations do not crash.
+- **Motion Sickness Testing**: Emulate "prefers-reduced-motion" in Chrome Dev Tools. Verify that horizontal pinning stops and the site becomes vertically readable.
+- **Lead Capture Testing**: Verify the multi-step "Free Pass" modal smoothly transitions between questions and properly captures input data into a JSON object.

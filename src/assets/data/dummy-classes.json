@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Apex Strength",
+        "time": "Mon, Wed, Fri - 06:00 AM",
+        "trainer": "Marcus Vance"
+    },
+    {
+        "id": 2,
+        "name": "Inferno Engine",
+        "time": "Tue, Thu - 06:30 PM",
+        "trainer": "Elena Rostova"
+    },
+    {
+        "id": 3,
+        "name": "Iron Mechanics",
+        "time": "Mon, Wed - 07:00 PM",
+        "trainer": "David Chen"
+    },
+    {
+        "id": 4,
+        "name": "Active Recovery",
+        "time": "Sat - 10:00 AM",
+        "trainer": "Sarah Jenkins"
+    }
+]

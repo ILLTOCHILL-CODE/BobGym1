@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* Anti-FOUC (Flash of Unstyled Content) */
+        html {
+            background-color: #050505;
+            color: #FAFAF9;
+        }
+
+        body {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+    <title>BOB'S GYM | Premium Health & Wellness</title>
+</head>
+
+<body>
+    <!-- Utility Bar -->
+    <div class="skip-flash">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <p>Welcome to Varanasi's Biggest & Best Gym.</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="/pages/classes.html" class="text-accent">Schedule</a>
+                <a href="/pages/membership.html" class="btn-primary"
+                    style="padding: 0.5rem 1rem; font-size: 1rem;">Login Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Glass Nav -->
+    <nav class="glass-nav">
+        <a href="/"
+            style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; letter-spacing: 2px;">BOB'S
+            GYM</a>
+        <div class="nav-links">
+            <a href="/pages/classes.html">Classes</a>
+            <a href="/pages/trainers.html">Trainers</a>
+            <a href="/pages/membership.html">Membership</a>
+        </div>
+    </nav>
+
+    <!-- Chapter 1: The Hook -->
+    <section class="hero"
+        style="height: 100vh; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <div class="hero-bg"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80') center/cover; z-index: -1;">
+        </div>
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: -1;">
+        </div>
+        <div class="container" style="text-align: center; margin-top: -5vh;">
+            <p class="slide-up text-accent"
+                style="font-weight: 600; letter-spacing: 4px; margin-bottom: 1rem; text-transform: uppercase; font-size: 0.875rem;">
+                Your Health, Elevated
+            </p>
+            <h1 class="slide-up"
+                style="font-family: var(--font-heading); font-size: clamp(2.5rem, 5vw, 5.5rem); font-weight: 400; margin-bottom: 1rem; line-height: 1.1; text-transform: none; white-space: nowrap;">
+                The Pinnacle of Wellness
+            </h1>
+            <p class="slide-up"
+                style="font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem; line-height: 1.6;">
+                World-class equipment, a relaxing massage centre, spa therapies, aerobics, and yoga. Discover the Bob's
+                Gym advantage today.
+            </p>
+            <a href="#climax" class="btn-primary fade-in" style="animation-delay: 1s;">Start Your Journey</a>
+        </div>
+
+        <!-- High-Density Stat Bar -->
+        <div class="fade-in"
+            style="position: absolute; bottom: 0; left: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(10,10,10,0.8); backdrop-filter: blur(10px); animation-delay: 1.5s;">
+            <div class="container"
+                style="display: flex; justify-content: space-around; padding: 2rem 0; text-align: center;">
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 0;">03</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; text-transform: uppercase;">Premium
+                        Locations</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 0;">SPA</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; text-transform: uppercase;">& Massage
+                        Therapy</p>
+                </div>
+                <div>
+                    <h3 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 0;">24/7</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem; text-transform: uppercase;">
+                        State-of-the-art Equipment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-track">
+            <!-- Set 1 -->
+            <span class="marquee-item">YOGA</span><span class="marquee-item">•</span>
+            <span class="marquee-item">AEROBICS</span><span class="marquee-item">•</span>
+            <span class="marquee-item">BODYBUILDING</span><span class="marquee-item">•</span>
+            <span class="marquee-item">SPA</span><span class="marquee-item">•</span>
+            <span class="marquee-item">MASSAGE</span><span class="marquee-item">•</span>
+            <!-- Set 2 (Duplicated for seamless loop) -->
+            <span class="marquee-item">YOGA</span><span class="marquee-item">•</span>
+            <span class="marquee-item">AEROBICS</span><span class="marquee-item">•</span>
+            <span class="marquee-item">BODYBUILDING</span><span class="marquee-item">•</span>
+            <span class="marquee-item">SPA</span><span class="marquee-item">•</span>
+            <span class="marquee-item">MASSAGE</span><span class="marquee-item">•</span>
+        </div>
+    </div>
+
+    <!-- Chapter 2: The Vibe -->
+    <section class="vibe-container" style="height: 100vh; overflow: hidden; background: var(--surface);">
+        <div class="vibe-wrapper" style="display: flex; width: 300vw; height: 100%;">
+            <div
+                style="width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 5%;">
+                <h2
+                    style="font-size: clamp(3.5rem, 6vw, 5.5rem); max-width: 800px; line-height: 1.1; margin-bottom: 1.5rem; text-transform: none;">
+                    Good health keeps you ahead.
+                </h2>
+                <p
+                    style="font-size: clamp(1.25rem, 2vw, 1.75rem); color: var(--text-secondary); max-width: 600px; line-height: 1.5;">
+                    Experience Varanasi's premier wellness environment, designed for ultimate performance and recovery.
+                </p>
+            </div>
+            <div
+                style="width: 100vw; height: 100%; background: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80') center/cover; opacity: 0.8;">
+            </div>
+            <div
+                style="width: 100vw; height: 100%; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80') center/cover; opacity: 0.8;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 3: Facility Zones Showcase -->
+    <section style="padding: 8rem 0;">
+        <div class="container" style="margin-bottom: 4rem;">
+            <p class="text-accent" style="font-weight: 700; letter-spacing: 2px;">THE ARENA</p>
+            <h2 style="font-size: 4rem;">ELITE FACILITY ZONES</h2>
+        </div>
+        <!-- Target for dynamic data -->
+        <div id="classes-bento" class="c2-grid"
+            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; padding: 0 5%; max-width: 1600px; margin: 0 auto;">
+            <!-- Populated by data-fetch.js -->
+        </div>
+    </section>
+
+    <!-- Chapter 2.5: The Arsenal (Collision Gallery) -->
+    <section class="gallery-collision"
+        style="height: 100vh; overflow: hidden; position: relative; background: var(--background);">
+        <!-- Giant Watermark -->
+        <div class="gallery-watermark"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30vw; font-weight: 900; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; z-index: 0; font-family: var(--font-heading);">
+            LUXURY</div>
+
+        <!-- Track Containers -->
+        <div class="gallery-track-left"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-1" alt="Gym 1">
+            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-3" alt="Gym 3">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-5" alt="Gym 5">
+        </div>
+
+        <div class="gallery-track-right"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;">
+            <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-2" alt="Gym 2">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-4" alt="Gym 4">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800"
+                class="col-img col-img-6" alt="Gym 6">
+        </div>
+    </section>
+
+    <!-- Chapter 3.5: The Investment (Concept C+) -->
+    <section class="cp-container">
+        <!-- Sticky Index Panel -->
+        <div class="cp-left-panel">
+            <div class="cp-title-small">Membership Packages</div>
+            <div class="cp-price-display">
+                <span>$</span>
+                <div id="cp-price-val">35</div>
+            </div>
+            <!-- Populated by data-fetch.js -->
+            <ul class="cp-nav" id="pricing-nav-container">
+            </ul>
+        </div>
+
+        <!-- Scrolling Tiers Panel -->
+        <div class="cp-right-panel">
+            <div class="cp-bg-wrapper">
+                <!-- Populated by data-fetch.js -->
+                <div class="cp-bg-layer" id="cp-bg">
+                </div>
+            </div>
+
+            <!-- Populated by data-fetch.js -->
+            <div id="pricing-zones-container">
+            </div>
+
+            <div class="cp-morph-cursor" id="cp-cursor">CLAIM</div>
+        </div>
+    </section>
+
+    <!-- Chapter 4: The Proof (Pro-Max Redesign) -->
+    <section style="background: var(--background); padding: 8rem 5%; position: relative;">
+        <!-- Live Background Depth Element -->
+        <div
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80') center/cover; opacity: 0.15; z-index: 0; pointer-events: none; filter: grayscale(100%) contrast(120%);">
+        </div>
+        <!-- Subtle radial gradient background element for fading edges -->
+        <div
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center, transparent 0%, var(--background) 80%); z-index: 0; pointer-events: none;">
+        </div>
+
+        <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
+
+            <!-- Section Header with refined typography -->
+            <div style="text-align: center; margin-bottom: 5rem;">
+                <p class="text-accent"
+                    style="font-weight: 700; letter-spacing: 3px; font-size: 0.875rem; text-transform: uppercase; margin-bottom: 0.5rem;">
+                    Member Experiences</p>
+                <h2
+                    style="font-size: clamp(3rem, 5vw, 4.5rem); margin: 0; text-transform: uppercase; line-height: 1; letter-spacing: -0.02em;">
+                    THE PROOF</h2>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card cursor-pointer">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+                        <div class="star-rating" style="margin-bottom: 0;">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                        </div>
+                        <span
+                            style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.25rem 0.5rem; letter-spacing: 1px;">[
+                            PREMIUM WELLNESS ]</span>
+                    </div>
+                    <p class="testimonial-quote">"The facilities are unmatched in Varanasi. From the world-class
+                        equipment to the relaxing spa and massage therapies, Bob's Gym offers a truly complete wellness
+                        experience."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar-wrapper">
+                            <img class="author-avatar"
+                                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150"
+                                alt="Priya S. Profile">
+                            <div class="verified-badge" title="Verified Member">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya S.</h4>
+                            <span class="author-tag">Member since 2023</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card cursor-pointer">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem;">
+                        <div class="star-rating" style="margin-bottom: 0;">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                        </div>
+                        <span
+                            style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--accent); border: 1px solid var(--accent); padding: 0.25rem 0.5rem; letter-spacing: 1px;">[
+                            EXPERT COACHING ]</span>
+                    </div>
+                    <p class="testimonial-quote">"The Yoga classes and personal training have completely transformed my
+                        approach to fitness. The environment is clean, friendly, and incredibly motivating."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar-wrapper">
+                            <img class="author-avatar"
+                                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150"
+                                alt="Rahul V. Profile">
+                            <div class="verified-badge" title="Verified Member">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rahul V.</h4>
+                            <span class="author-tag">Fitness Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 5: The Climax (Floating Monocle Redesign) -->
+    <section id="climax" class="cta-concept-2">
+        <!-- Deeply Blurred Background sets the tone without causing distraction -->
+        <div class="cta-bg"></div>
+
+        <!-- The encapsulating glass card frames the content tightly -->
+        <div class="cta-card">
+            <span class="cta-tag">Premium Access</span>
+            <h2 class="cta-heading">ELEVATE YOUR LIFE.</h2>
+            <p class="cta-copy">Experience the highest standard of fitness and wellness in Varanasi.</p>
+
+            <div class="cta-btn-wrapper">
+                <a href="/pages/membership.html" class="btn-apex-elite">
+                    Explore Memberships
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layered Footer -->
+    <footer
+        style="background: #050505; border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 5% 2rem; color: var(--text-secondary); position: relative; overflow: hidden;">
+        <div class="container"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; position: relative; z-index: 1;">
+
+            <div>
+                <h3 style="color: var(--text-primary); margin-bottom: 1.5rem; font-size: 1.5rem;">BOB'S GYM
+                </h3>
+                <p style="margin-bottom: 2rem; max-width: 300px;">Good health keeps you ahead.</p>
+                <div style="display: flex; gap: 1rem;">
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        <span style="color: white; font-weight: bold;">IG</span>
+                    </div>
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        <span style="color: white; font-weight: bold;">FB</span>
+                    </div>
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        <span style="color: white; font-weight: bold;">YT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 1.5rem;">LOCATIONS</h4>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="#" style="transition: color 0.2s;">Hathua Market (Chetganj)</a></li>
+                    <li><a href="#" style="transition: color 0.2s;">Mahmoorganj Rd (Sigra)</a></li>
+                    <li><a href="#" style="transition: color 0.2s;">Swastik Plaza (Lanka)</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 1.5rem;">AMENITIES</h4>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="/pages/classes.html" style="transition: color 0.2s;">Yoga & Aerobics</a></li>
+                    <li><a href="#" style="transition: color 0.2s;">Spa & Massage Centre</a></li>
+                    <li><a href="#" style="transition: color 0.2s;">Heavy Weight Zone</a></li>
+                    <li><a href="#" style="transition: color 0.2s;">Health Food Bar</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 style="color: var(--text-primary); margin-bottom: 1.5rem;">CONNECT</h4>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.75rem;">
+                    <li><a href="mailto:support@bobsgym.org" style="transition: color 0.2s;">support@bobsgym.org</a>
+                    </li>
+                    <li><a href="#" style="transition: color 0.2s;">Contact Us</a></li>
+                    <li><a href="/pages/trainers.html" style="transition: color 0.2s;">Meet the Team</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container"
+            style="border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; padding-top: 2rem; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; position: relative; z-index: 1;">
+            <p>&copy; 2026 Bob's Gym. All Rights Reserved.</p>
+            <div style="display: flex; gap: 1.5rem; font-size: 0.875rem;">
+                <a href="#" style="transition: color 0.2s;">Privacy Policy</a>
+                <a href="#" style="transition: color 0.2s;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module">
+        import { renderZones, renderPricing } from '/src/js/data-fetch.js';
+        import { initAnimations } from '/src/js/gsap-animations.js';
+        import { initPricingInteractions } from '/src/js/pricing-interactions.js';
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await renderZones('classes-bento');
+            await renderPricing();
+            initAnimations();
+            // Pricing interactions need to be initialized after DOM is injected
+            setTimeout(() => {
+                initPricingInteractions();
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

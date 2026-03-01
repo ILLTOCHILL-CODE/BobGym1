@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Body Building",
+        "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80",
+        "specs": [
+            "Olympic Benches",
+            "60kg Heavy Dumbbells",
+            "State-of-the-Art Free Weights"
+        ]
+    },
+    {
+        "name": "Running Class",
+        "image": "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80",
+        "specs": [
+            "Premium Treadmills",
+            "Guided Pacing",
+            "Endurance Training"
+        ]
+    },
+    {
+        "name": "Weight Loose",
+        "image": "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80",
+        "specs": [
+            "HIIT Sessions",
+            "Metabolic Conditioning",
+            "Fat Burn Focus"
+        ]
+    },
+    {
+        "name": "Aerobics Class",
+        "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80",
+        "specs": [
+            "High Energy Music",
+            "Cardio Rhythms",
+            "Group Environment"
+        ]
+    },
+    {
+        "name": "Gym Fitness",
+        "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80",
+        "specs": [
+            "Full Body Machines",
+            "Core Strengthening",
+            "Functional Training"
+        ]
+    },
+    {
+        "name": "Yoga Class",
+        "image": "https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?auto=format&fit=crop&q=80",
+        "specs": [
+            "Flexibility & Balance",
+            "Mindfulness",
+            "Guided Breathing"
+        ]
+    }
+]

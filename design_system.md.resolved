@@ -1,0 +1,94 @@
+# Gym Website Design System (Pro Max Edition)
+
+Based on the UI/UX Pro Max intelligence framework, this document serves as the absolute source of truth for the aesthetics, typography, and interactive storytelling experience of the Gym website.
+
+## 🏗️ DIMENSION 1: Pattern & Layout (The Narrative)
+**Pattern**: Scroll-Triggered Storytelling + Immersive Journey. 
+Generic websites act like brochures. This website must act like a cinematic movie trailer. 
+
+**Layout Strategy (The Scroll Journey)**:
+1. **Chapter 1: The Hook (Hero Section)** 
+   - Full-screen cinematic video or high-quality image background.
+   - Sticky transparent navigation (Glassmorphism).
+   - Massive typography commanding attention.
+2. **Chapter 2: The Vibe (Atmosphere)**
+   - Horizontal scrolling (Scroll-jacked filmstrip).
+   - Raw, gritty, unposed photography of the gym floor.
+3. **Chapter 3: The Process (Classes & Equipment)**
+   - Apple-style "Bento Grid". Modular, high-contrast dark grey cards.
+   - Dynamically generated via DOM loops based on CMS data (Variable lengths).
+4. **Chapter 4: The Proof (Testimonials)**
+   - Momentum-drag horizontal carousel showing member transformations.
+5. **Chapter 5: The Climax (Call to Action)**
+   - Massive, unavoidable interactive "Claim Free Pass" button triggering a multi-step onboarding modal.
+
+**Mobile First Mandates**:
+- Hamburger menu (full-screen modal overlay).
+- Swipeable carousels (no hidden horizontal scrollbars).
+- Minimum touch targets of 44x44px.
+
+## 🎨 DIMENSION 2: Style & Aesthetic
+**Aesthetic**: Dark Mode Excellence + High Energy Brutalism
+**Keywords**: Bold, dynamic, intense, premium, high-contrast, atmospheric.
+
+**Technical Guardrails**:
+- **Backgrounds**: Deep, rich darks to make imagery and neon pop. 
+- **Overlays**: Frosted glass (`backdrop-filter: blur(12px)`) for sticky navbars and modal backgrounds.
+- **Borders**: Sharp edges or minimal completely uniform border-radius (e.g., `4px` or `0px`) to complement the aggressive, active aesthetic. Avoid soft/round bubbles.
+- **Imagery**: High-quality, moody photography with vibrant accent overlays. All images must have an `alt` tag and a fallback strategy.
+
+## 🎨 DIMENSION 3: Color & Theme
+**Mood**: Energetic, powerful, premium. True Black base paired with high-visibility neon accents to signify action and adrenaline.
+
+```css
+:root {
+  --background: #0A0A0A;         /* True Black - Core Background */
+  --surface: #1A1A1A;            /* Card/Section Background (Bento Grid) */
+  --surface-hover: #242424;      /* Interactive hover state for cards */
+  --border: #333333;             /* Subtle Borders */
+  
+  --text-primary: #FFFFFF;       /* Pure White - Headings */
+  --text-secondary: #A3A3A3;     /* Muted Grey - Paragraphs */
+  
+  --accent: #CCFF00;             /* Electric/Neon Green (Action Color) */
+  --accent-hover: #B3E600;       /* Darker neon for hover states */
+  --error: #FF4500;              /* Neon Orange/Red for form errors */
+}
+```
+*Contrast Note: Maintain strict WCAG AA compliance (4.5:1 ratio).*
+
+## ✍️ DIMENSION 4: Typography
+**Vibe**: Raw, technical, impactful, and easily readable.
+- **Headings**: **Barlow Condensed** or **Space Grotesk**
+  - *Weights*: 700 (bold), 900 (black/italicized) for impactful marketing copy.
+  - *Usage*: Hero text, section titles, bold callouts.
+- **Body**: **Inter** or **Roboto**
+  - *Weights*: 400 (regular), 500 (medium).
+  - *Usage*: Biographies, pricing details, general paragraphs.
+- **Scale Strategy**: Use massive typography for the intro hook to convey strength (e.g., `8rem` on desktop, `4rem` on mobile). Do not be afraid of oversized text.
+
+## ✨ DIMENSION 5: Animations & Interactions (The GSAP Engine)
+This dimension is what separates this site from a template. We will heavily utilize GreenSock (GSAP) and ScrollTrigger.
+
+1. **The Hook (Text Splitting & Parallax)**
+   - Use `SplitText` to break the H1 into characters.
+   - Animate characters fading/sliding up: `gsap.from(chars, { y: 50, opacity: 0, stagger: 0.05 })`.
+   - ScrollTrigger lightly scales the background image (`scale: 1.1`) as the user scrolls down, creating depth.
+
+2. **The Vibe (Pinned Horizontal Scroll)**
+   - Use `ScrollTrigger.create({ pin: true, scrub: 1 })` on a wrapper `div`.
+   - As the user scrolls vertically, translate the inner container containing images horizontally along the X-axis (`xPercent: -100`).
+
+3. **The Process (Staggered Bento Grid & Magnetic Hover)**
+   - Grid cards must fade in dynamically. Given variable data (CMS), bind the animation to a class (e.g., `.bento-card`), NOT an ID.
+   - `gsap.from(".bento-card", { y: 30, opacity: 0, stagger: 0.1, scrollTrigger: ... })`
+   - Bind mouse coordinates on desktop to slightly rotate cards in 3D (`rotateX`, `rotateY`) and trigger a neon border glow.
+
+4. **The CTA Climax (Magnetic Pulse)**
+   - The "Claim Free Pass" button tracks mouse proximity. It physically pulls `(x, y)` toward the cursor within a given radius.
+   - Attach an infinite timeline (`yoyo: true, repeat: -1`) to pulse a soft neon box-shadow around the button.
+
+## ♿ DIMENSION 6: Accessibility & Fallbacks (Crucial)
+Because we are utilizing heavy Javascript animations:
+- **Motion Sickness**: Wrap all GSAP initializations in a `matchMedia` query checking `(prefers-reduced-motion: no-preference)`. If the user has motion reduction enabled, GSAP must instantly degrade to simple CSS fade-ins.
+- **Data Fallbacks**: If the CMS image fails, fallback to a branded SVG placeholder. If the CMS returns no classes, render a beautifully styled HTML empty state ("New Schedule Dropping Soon!").

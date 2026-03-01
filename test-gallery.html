@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Concepts | APEX</title>
+    <!-- Use existing styles if they exist, else we rely on inline for isolation -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;900&family=Barlow:wght@300;400;500;600;700;900&display=swap');
+
+        :root {
+            --background: #050505;
+            --surface: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #CCFF00;
+            --font-heading: 'Barlow Condensed', sans-serif;
+            --font-body: 'Barlow', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--background);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        /* Navigation for Tabs */
+        .concept-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+        }
+
+        .concept-btn {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .concept-btn.active,
+        .concept-btn:hover {
+            color: #000;
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ========================================= */
+        /* CONCEPT 1: MAGNETIC TENSION               */
+        /* ========================================= */
+        #concept1 {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1500px;
+            transform-style: preserve-3d;
+        }
+
+        .c1-watermark {
+            position: absolute;
+            font-family: var(--font-heading);
+            font-size: 35vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: -2vw;
+            line-height: 1;
+        }
+
+        .c1-gallery-container {
+            position: relative;
+            width: 80vw;
+            height: 80vh;
+            z-index: 1;
+            transform-style: preserve-3d;
+        }
+
+        .c1-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 400px;
+            height: 550px;
+            margin-top: -275px;
+            margin-left: -200px;
+            object-fit: cover;
+            /* Premium Base Shadow */
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.04) inset;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, box-shadow, filter;
+            filter: grayscale(80%) brightness(0.6);
+            transform-origin: center center;
+            border-radius: 4px;
+        }
+
+        /* Initial packed state vs fanned state is handled by JS but we need hover states */
+        .c1-gallery-container:hover .c1-card:not(:hover) {
+            filter: grayscale(100%) brightness(0.3);
+            transform: translateZ(-100px) scale(0.95);
+            /* Recoil effect overridden dynamically in JS */
+        }
+
+        .c1-card:hover {
+            z-index: 100 !important;
+            filter: grayscale(0%) brightness(1.1);
+            /* Elevated Hover Shadow */
+            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.95), 0 30px 60px -30px rgba(0, 0, 0, 0.7), 0 0 2px 1px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        /* ========================================= */
+        /* CONCEPT 2: KINETOSCOPE (Horizontal Scroll)*/
+        /* ========================================= */
+        #concept2 {
+            position: relative;
+            /* Need extra height to trigger long vertical scroll that translates to horizontal */
+            height: 400vh;
+            background: #030303;
+        }
+
+        .c2-sticky {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .c2-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-heading);
+            font-size: 40vw;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .c2-track {
+            display: flex;
+            gap: 2vw;
+            padding: 0 10vw;
+            z-index: 1;
+            height: 70vh;
+        }
+
+        .c2-panel {
+            flex: 0 0 60vw;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .c2-panel img {
+            width: 120%;
+            /* Extra width for parallax */
+            height: 100%;
+            object-fit: cover;
+            transform: translateX(0);
+            /* Handled by GSAP */
+            filter: grayscale(50%) contrast(1.1);
+        }
+
+        .c2-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        /* ========================================= */
+        /* CONCEPT 3: BRUTALIST SPOTLIGHT            */
+        /* ========================================= */
+        #concept3 {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .c3-bg-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .c3-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s ease-out;
+            transform: scale(1.05);
+            /* Water ripple shader mock via filter (since WebGL is too complex for single file copy paste) */
+            /* Using slight blur and scale to simulate heavy entry */
+            filter: grayscale(100%) contrast(1.2);
+        }
+
+        .c3-bg-image.active {
+            opacity: 0.4;
+            transform: scale(1);
+        }
+
+        .c3-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .c3-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .c3-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .c3-item {
+            font-family: var(--font-heading);
+            font-size: clamp(4rem, 8vw, 8rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.1);
+            text-align: center;
+            cursor: pointer;
+            line-height: 1;
+            padding: 1rem 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            mix-blend-mode: difference;
+        }
+
+        .c3-item:hover {
+            color: #fff;
+            transform: scale(1.02);
+            letter-spacing: 0.02em;
+        }
+
+        /* The mouse cursor "tear" mask effect */
+        .c3-cursor-mask {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            clip-path: circle(0px at 50% 50%);
+            transition: clip-path 0.1s;
+        }
+
+        .c3-cursor-mask img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="concept-nav">
+        <button class="concept-btn active" data-target="concept1">1. Magnetic Tension</button>
+        <button class="concept-btn" data-target="concept2">2. Kinetoscope</button>
+        <button class="concept-btn" data-target="concept3">3. Brutalist Spotlight</button>
+    </div>
+
+    <!-- CONCEPT 1 -->
+    <div id="concept1" class="tab-content active">
+        <div class="c1-watermark">RADIATE</div>
+        <div class="c1-gallery-container">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800"
+                class="c1-card" data-idx="0" alt="Gym">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=800"
+                class="c1-card" data-idx="1" alt="Gym">
+            <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&q=80&w=800"
+                class="c1-card" data-idx="2" alt="Gym">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=800"
+                class="c1-card" data-idx="3" alt="Gym">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800"
+                class="c1-card" data-idx="4" alt="Gym">
+        </div>
+    </div>
+
+    <!-- CONCEPT 2 -->
+    <div id="concept2" class="tab-content">
+        <!-- We use extra scroll space to drive the horizontal track -->
+        <div class="c2-sticky">
+            <div class="c2-watermark">UNCOMPROMISING</div>
+            <div class="c2-track">
+                <div class="c2-panel"><img
+                        src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=1200">
+                    <div class="c2-caption">The Vault</div>
+                </div>
+                <div class="c2-panel"><img
+                        src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=1200">
+                    <div class="c2-caption">Iron Floor</div>
+                </div>
+                <div class="c2-panel"><img
+                        src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1200">
+                    <div class="c2-caption">Metcon</div>
+                </div>
+                <div class="c2-panel"><img
+                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200">
+                    <div class="c2-caption">Recovery</div>
+                </div>
+                <!-- Extra empty space at end so last image centers -->
+                <div style="flex: 0 0 10vw;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONCEPT 3 -->
+    <div id="concept3" class="tab-content">
+        <div class="c3-bg-wrapper">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=1600"
+                id="bg-0" class="c3-bg-image">
+            <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=1600"
+                id="bg-1" class="c3-bg-image">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=1600"
+                id="bg-2" class="c3-bg-image">
+        </div>
+        <div class="c3-overlay"></div>
+
+        <div class="c3-cursor-mask" id="c3-mask">
+            <img src="" id="mask-img">
+        </div>
+
+        <div class="c3-content">
+            <ul class="c3-list">
+                <li class="c3-item" data-idx="0">01 — The Iron Vault</li>
+                <li class="c3-item" data-idx="1">02 — Metabolic Conviction</li>
+                <li class="c3-item" data-idx="2">03 — Deep Recovery</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Tab Navigation
+        const btns = document.querySelectorAll('.concept-btn');
+        const contents = document.querySelectorAll('.tab-content');
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btns.forEach(b => b.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                const target = document.getElementById(btn.dataset.target);
+                target.classList.add('active');
+
+                // Re-trigger scroll triggers for Concept 2 if opened
+                if (btn.dataset.target === 'concept2') {
+                    ScrollTrigger.refresh();
+                }
+            });
+        });
+
+        /* ========================================= */
+        /* CONCEPT 1 LOGIC                           */
+        /* ========================================= */
+        const c1Cards = document.querySelectorAll('.c1-card');
+        const c1Container = document.querySelector('.c1-gallery-container');
+
+        // Initial scatter positions
+        const scatterData = [
+            { x: -250, y: -100, rot: -15, z: 10 },
+            { x: -100, y: 50, rot: -5, z: 20 },
+            { x: 50, y: -50, rot: 8, z: 30 },
+            { x: 180, y: 120, rot: 15, z: 40 },
+            { x: 300, y: -80, rot: 25, z: 50 },
+        ];
+
+        function applyScatter() {
+            c1Cards.forEach((card, i) => {
+                gsap.set(card, {
+                    x: scatterData[i].x,
+                    y: scatterData[i].y,
+                    rotationZ: scatterData[i].rot,
+                    z: scatterData[i].z
+                });
+            });
+        }
+        applyScatter();
+
+        // Parallax and Magnetic Recoil
+        c1Container.addEventListener('mousemove', (e) => {
+            const rect = c1Container.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left - rect.width / 2;
+            const mouseY = e.clientY - rect.top - rect.height / 2;
+
+            c1Cards.forEach((card, i) => {
+                // If this is not the hovered card, apply recoil pushing away from cursor
+                if (card !== e.target && card.matches(':not(:hover)')) {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCX = cardRect.left + cardRect.width / 2;
+                    const cardCY = cardRect.top + cardRect.height / 2;
+
+                    const dx = cardCX - e.clientX;
+                    const dy = cardCY - e.clientY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    // The closer the mouse, the stronger the push
+                    const pushFactor = Math.max(0, 300 - dist) / 300;
+
+                    gsap.to(card, {
+                        x: scatterData[i].x + dx * pushFactor * 0.2,
+                        y: scatterData[i].y + dy * pushFactor * 0.2,
+                        rotationX: mouseY * 0.05,
+                        rotationY: -mouseX * 0.05,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
+                } else {
+                    // Hovered card snaps to flat and pops up
+                    gsap.to(card, {
+                        x: scatterData[i].x,
+                        y: scatterData[i].y,
+                        rotationX: 0,
+                        rotationY: 0,
+                        rotationZ: 0,
+                        z: 150,
+                        duration: 0.4,
+                        ease: "power3.out"
+                    });
+                }
+            });
+
+            // Move watermark slightly opposite
+            gsap.to('.c1-watermark', {
+                x: -mouseX * 0.1,
+                y: -mouseY * 0.1,
+                duration: 1
+            });
+        });
+
+        c1Container.addEventListener('mouseleave', () => {
+            applyScatter();
+            gsap.to('.c1-watermark', { x: 0, y: 0, duration: 1 });
+            c1Cards.forEach((card, i) => {
+                gsap.to(card, {
+                    rotationX: 0,
+                    rotationY: 0,
+                    z: scatterData[i].z,
+                    duration: 0.8,
+                    ease: "power2.out"
+                });
+            });
+        });
+
+        /* ========================================= */
+        /* CONCEPT 2 LOGIC                           */
+        /* ========================================= */
+        // Configure ScrollTrigger for horizontal scroll
+        const c2Track = document.querySelector('.c2-track');
+        const c2Panels = document.querySelectorAll('.c2-panel img');
+
+        let c2Timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#concept2",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1, // Smooth scrubbing
+            }
+        });
+
+        // Translate the track horizontally
+        c2Timeline.to(c2Track, {
+            xPercent: -100, // Move track left
+            ease: "none"
+        }, 0);
+
+        // Counter-parallax the images inside their panels
+        c2Timeline.to(c2Panels, {
+            xPercent: 15, // Move image right as track moves left
+            ease: "none"
+        }, 0);
+
+        // Counter-move the watermark slower
+        c2Timeline.to('.c2-watermark', {
+            xPercent: 20,
+            ease: "none"
+        }, 0);
+
+        /* ========================================= */
+        /* CONCEPT 3 LOGIC                           */
+        /* ========================================= */
+        const c3Items = document.querySelectorAll('.c3-item');
+        const c3Bgs = document.querySelectorAll('.c3-bg-image');
+        const c3MaskWrapper = document.getElementById('c3-mask');
+        const c3MaskImg = document.getElementById('mask-img');
+
+        c3Items.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                // Dim others
+                c3Items.forEach(i => i.style.opacity = '0.2');
+                item.style.opacity = '1';
+
+                // Fade in background for dramatic tint
+                c3Bgs.forEach(bg => bg.classList.remove('active'));
+                const targetBg = document.getElementById(`bg-${index}`);
+                targetBg.classList.add('active');
+
+                // Set mask image source to match
+                c3MaskImg.src = targetBg.src;
+            });
+
+            item.addEventListener('mouseleave', () => {
+                c3Items.forEach(i => i.style.opacity = '1');
+            });
+        });
+
+        // Cursor Mask Effect
+        const c3Container = document.getElementById('concept3');
+        let maskSize = 0;
+        let isC3Hovered = false;
+
+        c3Container.addEventListener('mousemove', (e) => {
+            isC3Hovered = true;
+            // Expand mask near items
+            maskSize = 350; // Radius of spot
+
+            gsap.to(c3MaskWrapper, {
+                clipPath: `circle(${maskSize}px at ${e.clientX}px ${e.clientY}px)`,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        c3Container.addEventListener('mouseleave', () => {
+            isC3Hovered = false;
+            gsap.to(c3MaskWrapper, {
+                clipPath: `circle(0px at 50% 50%)`,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+            c3Bgs.forEach(bg => bg.classList.remove('active'));
+        });
+
+    </script>
+</body>
+
+</html>

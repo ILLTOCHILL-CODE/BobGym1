@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        /* Anti-FOUC (Flash of Unstyled Content) */
+        html {
+            background-color: #050505;
+            color: #fff;
+        }
+
+        body {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+    <title>APEX | Our Elite Trainers</title>
+</head>
+
+<body style="padding-top: 100px;">
+    <!-- Glass Nav -->
+    <nav class="glass-nav">
+        <a href="/"
+            style="font-family: var(--font-heading); font-size: 2rem; font-weight: 900; letter-spacing: 2px;">APEX</a>
+        <div class="nav-links">
+            <a href="/pages/classes.html">Classes</a>
+            <a href="/pages/trainers.html" class="text-accent">Trainers</a>
+            <a href="/pages/membership.html">Membership</a>
+        </div>
+    </nav>
+
+    <div class="container" style="min-height: 80vh; padding-top: 4rem;">
+        <h1 style="font-size: 4rem; margin-bottom: 1rem;">THE ARCHITECTS.</h1>
+        <p class="text-accent">Meet the individuals who will rebuild you.</p>
+
+        <div id="trainer-roster" class="bento-grid" style="margin-top: 3rem;">
+            <!-- Rendered by JS -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        style="border-top: 1px solid var(--border); padding: 4rem 5%; text-align: center; color: var(--text-secondary);">
+        <p>&copy; 2026 APEX Elite Fitness. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/js/main.js"></script>
+    <script type="module">
+        import { renderTrainers } from '/src/js/data-fetch.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTrainers('trainer-roster');
+        });
+    </script>
+</body>
+
+</html>

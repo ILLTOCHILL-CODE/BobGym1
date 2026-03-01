@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avant-Garde Concepts | APEX</title>
+    <link rel="stylesheet" href="/src/css/variables.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .concept-header {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: #000;
+        }
+
+        .concept-header h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 3rem;
+            color: #CCFF00;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .concept-header p {
+            color: #888;
+            max-width: 600px;
+            margin: 1rem auto 0;
+        }
+
+        /* CONCEPT 1: Enhanced Bento */
+        .c1-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .c1-card {
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .c1-card:hover {
+            transform: translateY(-5px);
+            border-color: #333;
+        }
+
+        .c1-title {
+            font-family: 'Barlow Condensed';
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .c1-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: grayscale(100%);
+            transition: 0.3s;
+        }
+
+        .c1-card:hover .c1-img {
+            filter: grayscale(0%);
+        }
+
+        /* CONCEPT 2: Cinematic Hover */
+        .c2-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            padding: 4rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .c2-card {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .c2-grid:has(.c2-card:hover) .c2-card:not(:hover) {
+            opacity: 0.3;
+        }
+
+        .c2-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.4) contrast(1.2);
+            transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, filter;
+        }
+
+        .c2-card:hover .c2-img {
+            filter: grayscale(0%) brightness(0.9);
+            transform: scale(1.06);
+        }
+
+        .c2-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px;
+            box-sizing: border-box;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            transform: translateY(40%);
+            transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .c2-card:hover .c2-content {
+            transform: translateY(0);
+        }
+
+        .c2-title {
+            font-family: 'Barlow Condensed';
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+
+        .c2-details {
+            margin-top: 1rem;
+            opacity: 0;
+            transition: opacity 500ms 100ms;
+            font-family: 'JetBrains Mono', 'Inter', monospace;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            color: #ccc;
+        }
+
+        .c2-card:hover .c2-details {
+            opacity: 1;
+        }
+
+        .c2-details div {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .c2-details div::before {
+            content: '>';
+            color: #CCFF00;
+        }
+
+        @media (max-width: 900px) {
+            .c2-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CONCEPT 3: Panoptic Scroll */
+        .c3-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .c3-text {
+            font-family: 'Barlow Condensed';
+            font-weight: 900;
+            font-size: 15vw;
+            line-height: 0.8;
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            transform: scale(1);
+        }
+
+        /* CONCEPT 4: Stateful Monolith */
+        .c4-container {
+            height: 80vh;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .c4-base-img,
+        .c4-color-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .c4-base-img {
+            filter: grayscale(100%) brightness(0.3);
+        }
+
+        .c4-color-img {
+            clip-path: circle(0px at 50% 50%);
+            transition: clip-path 0.1s;
+        }
+
+        .c4-glass-panel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(20px) saturate(150%);
+            -webkit-backdrop-filter: blur(20px) saturate(150%);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 4rem 3rem;
+            transform: translateX(100%);
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+            pointer-events: none;
+        }
+
+        .c4-container.active .c4-glass-panel {
+            transform: translateX(0);
+        }
+
+        .c4-glass-title {
+            font-family: 'Barlow Condensed';
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0 0 2rem 0;
+            line-height: 0.9;
+            color: #f9f9f9;
+        }
+
+        .c4-glass-specs {
+            font-family: 'JetBrains Mono', 'Inter', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            color: #A3A3A3;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .c4-glass-specs div {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .c4-glass-specs div span:last-child {
+            color: #CCFF00;
+        }
+
+        .custom-cursor-c4 {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #CCFF00;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            mix-blend-mode: difference;
+            z-index: 10;
+        }
+
+        .c4-container:hover .custom-cursor-c4 {
+            opacity: 1;
+        }
+
+        /* Zones invisible overlays */
+        .c4-zones {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 5;
+        }
+
+        .c4-zone {
+            flex: 1;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div
+        style="padding: 2rem; background: #CCFF00; color: #000; text-align: center; font-family: 'Barlow Condensed'; font-weight: 900; font-size: 2rem;">
+        ELITE UI/UX PROVING GROUNDS
+    </div>
+
+    <!-- CONCEPT 1 -->
+    <div class="concept-header">
+        <h2>1. The Conventional Grid</h2>
+        <p>A standard approach utilizing a CSS grid and grayscale hover states. Clean, but predictable.</p>
+    </div>
+    <section class="c1-grid">
+        <div class="c1-card">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80"
+                alt="Iron Floor" class="c1-img">
+            <h3 class="c1-title">The Iron Floor</h3>
+            <p style="color: #A3A3A3;">Our expansive free weight area featuring custom Eleiko racks.</p>
+        </div>
+        <div class="c1-card">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80"
+                alt="Cardio Deck" class="c1-img">
+            <h3 class="c1-title">Cardio Deck</h3>
+            <p style="color: #A3A3A3;">High-end Woodway treadmills overlooking the main facility.</p>
+        </div>
+        <div class="c1-card">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80"
+                alt="Recovery" class="c1-img">
+            <h3 class="c1-title">Recovery Lounge</h3>
+            <p style="color: #A3A3A3;">Ice baths, infrared saunas, and compression therapy.</p>
+        </div>
+    </section>
+
+    <!-- CONCEPT 2 -->
+    <div class="concept-header" style="margin-top: 5rem;">
+        <h2>2. Cinematic Hover Cards</h2>
+        <p>Tall aspect-ratio cards with stateful image reveals. Black & white to color, progressive data disclosure.</p>
+    </div>
+    <section class="c2-grid">
+        <div class="c2-card">
+            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80" alt="Iron"
+                class="c2-img">
+            <div class="c2-content">
+                <h3 class="c2-title">The Iron Floor</h3>
+                <div class="c2-details">
+                    <div>8 ELEIKO PLATFORMS</div>
+                    <div>CALIBRATED PLATES</div>
+                    <div>150LB DUMBBELLS</div>
+                </div>
+            </div>
+        </div>
+        <div class="c2-card">
+            <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80"
+                alt="Cardio" class="c2-img">
+            <div class="c2-content">
+                <h3 class="c2-title">Cardio Deck</h3>
+                <div class="c2-details">
+                    <div>12 WOODWAY TREADS</div>
+                    <div>CONCEPT 2 ROWERS</div>
+                    <div>ASSAULT BIKES</div>
+                </div>
+            </div>
+        </div>
+        <div class="c2-card">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80"
+                alt="Recovery" class="c2-img">
+            <div class="c2-content">
+                <h3 class="c2-title">Recovery Lounge</h3>
+                <div class="c2-details">
+                    <div>COLD PLUNGE TUBS</div>
+                    <div>INFRARED SAUNA</div>
+                    <div>NORMATEC BOOTS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPT 3 -->
+    <div class="concept-header" style="margin-top: 5rem;">
+        <h2>3. Panoptic Scroll</h2>
+        <p>Massive 15vw typography masking an image behind it. Aggressive letter-spacing reveals the space on scroll.
+        </p>
+    </div>
+    <section class="c3-container" id="c3-sec">
+        <div class="c3-text" id="c3-text">
+            UNRIVALED<br>FACILITY
+        </div>
+    </section>
+
+    <!-- CONCEPT 4 -->
+    <div class="concept-header" style="margin-top: 5rem;">
+        <h2>4. Stateful Monolith</h2>
+        <p>A panoramic view. Move your mouse over different thirds of the image to spot-colorize and reveal specs via
+            glassmorphism.</p>
+    </div>
+    <section class="c4-container" id="c4-container">
+        <!-- We use one wide gym image for the background -->
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80"
+            alt="Base" class="c4-base-img">
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=80"
+            alt="Color" class="c4-color-img" id="c4-mask">
+
+        <div class="c4-zones">
+            <div class="c4-zone" data-title="THE IRON FLOOR" data-s1="8x SQUAT RACKS" data-s2="150LB DUMBBELLS"
+                data-s3="CALIBRATED PLATES"></div>
+            <div class="c4-zone" data-title="THE TURF" data-s1="30M SLED TRACK" data-s2="PLYO BOXES"
+                data-s3="KETTLEBELLS"></div>
+            <div class="c4-zone" data-title="RECOVERY LAB" data-s1="COLD PLUNGE" data-s2="INFRARED SAUNA"
+                data-s3="COMPRESSION"></div>
+        </div>
+
+        <div class="c4-glass-panel">
+            <h3 class="c4-glass-title" id="c4-t">THE IRON FLOOR</h3>
+            <div class="c4-glass-specs">
+                <div><span id="c4-s1">8x SQUAT RACKS</span> <span>/ 01</span></div>
+                <div><span id="c4-s2">150LB DUMBBELLS</span> <span>/ 02</span></div>
+                <div><span id="c4-s3">CALIBRATED PLATES</span> <span>/ 03</span></div>
+            </div>
+        </div>
+
+        <div class="custom-cursor-c4" id="c4-cursor"></div>
+    </section>
+
+    <div style="height: 100px; background: #000;"></div>
+
+    <script>
+        // C3 Scroll Logic
+        window.addEventListener('scroll', () => {
+            const c3 = document.getElementById('c3-sec');
+            const text = document.getElementById('c3-text');
+            const rect = c3.getBoundingClientRect();
+
+            // Check if section is visible
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // Calculate percentage of scroll relative to viewport
+                let pct = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                if (pct < 0) pct = 0;
+                if (pct > 1) pct = 1;
+
+                // Animate letter spacing from -5vw to 5vw
+                let spacing = -5 + (pct * 10);
+                text.style.letterSpacing = `${spacing}vw`;
+            }
+        });
+
+        // C4 Mouse Logic
+        const c4 = document.getElementById('c4-container');
+        const c4Mask = document.getElementById('c4-mask');
+        const c4Cursor = document.getElementById('c4-cursor');
+        const c4Title = document.getElementById('c4-t');
+        const c4s1 = document.getElementById('c4-s1');
+        const c4s2 = document.getElementById('c4-s2');
+        const c4s3 = document.getElementById('c4-s3');
+
+        c4.addEventListener('mousemove', (e) => {
+            const rect = c4.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            c4Mask.style.clipPath = `circle(300px at ${x}px ${y}px)`;
+            c4Cursor.style.left = `${x}px`;
+            c4Cursor.style.top = `${y}px`;
+        });
+
+        c4.addEventListener('mouseenter', () => {
+            c4.classList.add('active');
+            c4Mask.style.transition = 'clip-path 0.1s ease-out';
+        });
+
+        c4.addEventListener('mouseleave', () => {
+            c4.classList.remove('active');
+            // Hide the spotlight
+            c4Mask.style.clipPath = `circle(0px at 50% 50%)`;
+            c4Mask.style.transition = 'clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        });
+
+        document.querySelectorAll('.c4-zone').forEach(zone => {
+            zone.addEventListener('mouseenter', (e) => {
+                c4Title.textContent = e.target.dataset.title;
+                c4s1.textContent = e.target.dataset.s1;
+                c4s2.textContent = e.target.dataset.s2;
+                c4s3.textContent = e.target.dataset.s3;
+            });
+        });
+    </script>
+</body>
+
+</html>
