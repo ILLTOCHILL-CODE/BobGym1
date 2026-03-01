@@ -1,6 +1,6 @@
 export async function fetchDummyData(endpoint) {
     try {
-        const response = await fetch(`/src/assets/data/${endpoint}.json`);
+        const response = await fetch(`/data/${endpoint}.json`);
         if (!response.ok) throw new Error('Data not found');
         return await response.json();
     } catch (error) {
