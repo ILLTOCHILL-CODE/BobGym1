@@ -25,7 +25,7 @@
         <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
             <p>Welcome to Varanasi's Biggest & Best Gym.</p>
             <div style="display: flex; gap: 1rem;">
-                <a href="/pages/classes.html" class="text-accent">Schedule</a>
+                <a href="/pages/classes.html" class="text-accent" style="padding: 0.5rem;">Schedule</a>
                 <a href="/pages/membership.html" class="btn-primary"
                     style="padding: 0.5rem 1rem; font-size: 1rem;">Login Portal</a>
             </div>
@@ -46,7 +46,7 @@
 
     <!-- Chapter 1: The Hook -->
     <section class="hero"
-        style="height: 100vh; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        style="min-height: 100vh; height: 100dvh; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; overflow: hidden;">
         <video class="hero-bg-video" autoplay loop muted playsinline
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
             <source src="/videos/hero-bg.mp4" type="video/mp4">
@@ -75,7 +75,7 @@
         <div class="fade-in"
             style="position: absolute; bottom: 0; left: 0; width: 100%; border-top: 1px solid rgba(255,255,255,0.1); background: rgba(10,10,10,0.8); backdrop-filter: blur(10px); animation-delay: 1.5s;">
             <div class="container"
-                style="display: flex; justify-content: space-around; padding: 2rem 0; text-align: center;">
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: var(--space-md); padding: 2rem 0; text-align: center;">
                 <div>
                     <h3 style="font-size: 2.5rem; color: var(--text-primary); margin-bottom: 0;">03</h3>
                     <p style="color: var(--text-secondary); font-size: 0.875rem; text-transform: uppercase;">Premium
@@ -114,7 +114,8 @@
     </div>
 
     <!-- Chapter 2: The Vibe -->
-    <section class="vibe-container" style="height: 100vh; overflow: hidden; background: var(--surface);">
+    <section class="vibe-container"
+        style="min-height: 100vh; height: 100dvh; overflow: hidden; background: var(--surface);">
         <div class="vibe-wrapper" style="display: flex; width: 300vw; height: 100%;">
             <div
                 style="width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 5%;">
@@ -151,7 +152,7 @@
 
     <!-- Chapter 2.5: The Arsenal (Collision Gallery) -->
     <section class="gallery-collision"
-        style="height: 100vh; overflow: hidden; position: relative; background: var(--background);">
+        style="min-height: 100vh; height: 100dvh; overflow: hidden; position: relative; background: var(--background);">
         <!-- Giant Watermark -->
         <div class="gallery-watermark"
             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 30vw; font-weight: 900; color: rgba(255,255,255,0.02); white-space: nowrap; pointer-events: none; z-index: 0; font-family: var(--font-heading);">
@@ -179,34 +180,31 @@
         </div>
     </section>
 
-    <!-- Chapter 3.5: The Investment (Concept C+) -->
-    <section class="cp-container">
-        <!-- Sticky Index Panel -->
-        <div class="cp-left-panel">
-            <div class="cp-title-small">Membership Packages</div>
-            <div class="cp-price-display">
-                <span>$</span>
-                <div id="cp-price-val">35</div>
-            </div>
-            <!-- Populated by data-fetch.js -->
-            <ul class="cp-nav" id="pricing-nav-container">
-            </ul>
-        </div>
-
-        <!-- Scrolling Tiers Panel -->
-        <div class="cp-right-panel">
-            <div class="cp-bg-wrapper">
-                <!-- Populated by data-fetch.js -->
-                <div class="cp-bg-layer" id="cp-bg">
+    <!-- Chapter 3.5: The Investment (Refactored) -->
+    <section class="cp-intrinsic-container">
+        <!-- Sticky Header/Sidebar -->
+        <aside class="cp-sidebar">
+            <div class="cp-sticky-content">
+                <h3 class="cp-title-small">Membership Packages</h3>
+                <div class="cp-price-display">
+                    <span>$</span>
+                    <span id="cp-price-val">35</span>
                 </div>
+                <!-- Populated by data-fetch.js -->
+                <ul class="cp-nav" id="pricing-nav-container">
+                </ul>
             </div>
+        </aside>
 
+        <!-- Content Scroller -->
+        <main class="cp-content-scroll">
+            <div class="cp-bg-layer" id="cp-bg"></div>
             <!-- Populated by data-fetch.js -->
-            <div id="pricing-zones-container">
+            <div id="pricing-zones-container" class="cp-zones">
             </div>
 
             <div class="cp-morph-cursor" id="cp-cursor">CLAIM</div>
-        </div>
+        </main>
     </section>
 
     <!-- Chapter 4: The Proof (Pro-Max Redesign) -->
@@ -373,15 +371,15 @@
                 <p style="margin-bottom: 2rem; max-width: 300px;">Good health keeps you ahead.</p>
                 <div style="display: flex; gap: 1rem;">
                     <div
-                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
                         <span style="color: white; font-weight: bold;">IG</span>
                     </div>
                     <div
-                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
                         <span style="color: white; font-weight: bold;">FB</span>
                     </div>
                     <div
-                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
+                        style="width: 48px; height: 48px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s;">
                         <span style="color: white; font-weight: bold;">YT</span>
                     </div>
                 </div>

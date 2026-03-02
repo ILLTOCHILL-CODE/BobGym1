@@ -34,6 +34,22 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
 
+  /* Fluid Spacing Scale (min-size, fluid-calc, max-size) */
+  --space-sm: clamp(0.75rem, 2vw, 1rem);
+  /* 12px to 16px */
+  --space-md: clamp(1.5rem, 4vw, 2.5rem);
+  /* 24px to 40px */
+  --space-lg: clamp(3rem, 8vw, 5rem);
+  /* 48px to 80px */
+  --space-section: clamp(4rem, 10vw, 8rem);
+  /* 64px to 128px */
+
+  /* Fluid Typography Scale */
+  --h1-fluid: clamp(2.5rem, 6vw + 1rem, 5.5rem);
+  --h2-fluid: clamp(2rem, 5vw + 0.5rem, 4rem);
+  --h3-fluid: clamp(1.5rem, 3vw, 2.5rem);
+  --body-fluid: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+
   --transition-fast: 200ms ease-out;
   --transition-smooth: 400ms cubic-bezier(0.16, 1, 0.3, 1);
 }
